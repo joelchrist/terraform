@@ -17,11 +17,11 @@ resource "google_container_cluster" "primary" {
   additional_zones = ["${slice(data.google_compute_zones.available.names, 1, length(data.google_compute_zones.available.names))}"]
 
   node_pool {
-    node_count = 2
+    node_count = 1
 
     autoscaling {
-      max_node_count = 2
-      min_node_count = 2
+      max_node_count = 1
+      min_node_count = 1
     }
 
     management {
