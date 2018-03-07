@@ -96,6 +96,13 @@ resource "digitalocean_record" "google_mail_5" {
   priority = "10"
 }
 
+resource "digitalocean_record" "google_spf" {
+  domain = "${digitalocean_domain.root_domain.id}"
+  type = "TXT"
+  name = "@"
+  value = "v=spf1 include:_spf.google.com ~all"
+}
+
 //Cluster specific DNS settings
 resource "digitalocean_record" "cluster_root" {
   domain = "${digitalocean_domain.root_domain.id}"
@@ -107,6 +114,6 @@ resource "digitalocean_record" "cluster_root" {
 resource "digitalocean_record" "cluster_wildcard" {
   domain = "${digitalocean_domain.root_domain.id}"
   type = "A"
-  name = "cluster"
+  name = "*.cluster"
   value = "${var.loadbalancer_static_ip}"
 }
