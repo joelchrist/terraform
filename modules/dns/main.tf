@@ -1,3 +1,7 @@
+provider "digitalocean" {
+  token = "${var.do_token}"
+}
+
 resource "digitalocean_domain" "root_domain" {
   name       = "${var.root_domain}"
   ip_address = "188.226.166.36" //TODO: Get from droplet that will be created in terraform
@@ -90,4 +94,19 @@ resource "digitalocean_record" "google_mail_5" {
   name = "@"
   value = "alt4.aspmx.l.google.com."
   priority = "10"
+}
+
+//Cluster specific DNS settings
+resource "digitalocean_record" "cluster_root" {
+  domain = "${digitalocean_domain.root_domain.id}"
+  type = "A"
+  name = "cluster"
+  value = "${var.loadbalancer_static_ip}"
+}
+
+resource "digitalocean_record" "cluster_wildcard" {
+  domain = "${digitalocean_domain.root_domain.id}"
+  type = "A"
+  name = "cluster"
+  value = "${var.loadbalancer_static_ip}"
 }
