@@ -14,7 +14,9 @@ resource "google_container_cluster" "primary" {
   name = "${var.cluster_name}"
 
   zone = "${data.google_compute_zones.available.names[0]}"
-  additional_zones = ["${slice(data.google_compute_zones.available.names, 1, length(data.google_compute_zones.available.names))}"]
+  // No additional zones for now
+  //additional_zones = ["${slice(data.google_compute_zones.available.names, 1, length(data.google_compute_zones.available.names))}"]
+  additional_zones = []
 
   node_pool {
     node_count = 1
