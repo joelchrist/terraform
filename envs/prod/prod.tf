@@ -19,3 +19,9 @@ module "dns" "joelchrist.nl" {
   do_token = "${var.do_token}"
   loadbalancer_static_ip = "${module.networking.ingress-lb-address}"
 }
+
+module "buckets" "buckets" {
+  source = "../../modules/buckets"
+  region = "${var.gcp_region}"
+  gcp_account_file = "${var.gcp_account_file}"
+}
