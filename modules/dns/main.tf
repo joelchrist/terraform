@@ -117,3 +117,10 @@ resource "digitalocean_record" "cluster_wildcard" {
   name = "*.cluster"
   value = "${var.loadbalancer_static_ip}"
 }
+
+resource "digitalocean_record" "clsuter_shorty" {
+  domain = "${digitalocean_domain.root_domain.id}"
+  type = "A"
+  name = "shorty"
+  value = "${var.loadbalancer_static_ip}"
+}

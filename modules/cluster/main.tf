@@ -19,11 +19,11 @@ resource "google_container_cluster" "primary" {
   additional_zones = []
 
   node_pool {
-    node_count = 1
+    node_count = 2
 
     autoscaling {
-      max_node_count = 1
-      min_node_count = 1
+      min_node_count = 2
+      max_node_count = 3
     }
 
     management {
@@ -38,8 +38,8 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-  min_master_version = "1.8.7-gke.1"
-  node_version = "1.8.7-gke.1"
+  min_master_version = "1.9.4-gke.1"
+  node_version = "1.9.4-gke.1"
 
   master_auth {
     username = "${var.username}"
