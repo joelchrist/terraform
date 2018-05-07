@@ -4,7 +4,7 @@ provider "digitalocean" {
 
 resource "digitalocean_domain" "root_domain" {
   name       = "${var.root_domain}"
-  ip_address = "188.226.166.36" //TODO: Get from droplet that will be created in terraform
+  ip_address = "${var.root_ip}" //TODO: Get from droplet that will be created in terraform
 }
 
 resource "digitalocean_record" "keybase_verification_txt" {
