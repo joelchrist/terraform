@@ -6,7 +6,7 @@ provider "google" {
 
 resource "google_compute_instance" "server" {
   name         = "joelchristnl"
-  machine_type = "n1-standard-1"
+  machine_type = "g1-small"
   zone = "${var.gcp_zone}"
 
   boot_disk {
@@ -15,6 +15,7 @@ resource "google_compute_instance" "server" {
     }
   }
 
+	allow_stopping_for_update = true
   can_ip_forward = true
 
   network_interface {
