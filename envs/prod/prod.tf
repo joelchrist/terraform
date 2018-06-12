@@ -17,4 +17,3 @@ module "buckets" "buckets" {
   region = "${var.gcp_region}"
   gcp_account_file = "${var.gcp_account_file}"
 }
-
