@@ -8,7 +8,3 @@ variable "do_token" {
   description = "The DigitalOcean token"
 }
 
-variable "root_ip" {
-  type = "string"
-  description = "The root IP address"
-}

@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "joelchristnl-terraform-state"
+    bucket  = "terraform-state-joelchrist"
     prefix  = "env/prod"
     credentials = "../../credentials/gcp-terraform.json"
   }

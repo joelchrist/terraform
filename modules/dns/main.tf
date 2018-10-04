@@ -4,7 +4,7 @@ provider "digitalocean" {
 
 resource "digitalocean_domain" "root_domain" {
   name       = "${var.root_domain}"
-  ip_address = "${var.root_ip}" //TODO: Get from droplet that will be created in terraform
+  ip_address = "127.0.0.1"
 }
 
 resource "digitalocean_record" "keybase_verification_txt" {
@@ -101,4 +101,11 @@ resource "digitalocean_record" "google_spf" {
   type = "TXT"
   name = "@"
   value = "v=spf1 include:_spf.google.com ~all"
+}
+
+resource "digitalocean_record" "wander_displayserver" {
+  domain = "${digitalocean_domain.root_domain.id}"
+  type = "A"
+  name = "wander"
+  value = "35.204.210.24"
 }
