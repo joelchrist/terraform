@@ -102,10 +102,3 @@ resource "digitalocean_record" "google_spf" {
   name = "@"
   value = "v=spf1 include:_spf.google.com ~all"
 }
-
-resource "digitalocean_record" "wander_displayserver" {
-  domain = "${digitalocean_domain.root_domain.id}"
-  type = "A"
-  name = "wander"
-  value = "35.204.210.24"
-}
