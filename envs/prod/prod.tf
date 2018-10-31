@@ -3,4 +3,3 @@ module "dns" "joelchrist.nl" {
   root_domain = "joelchrist.nl"
   do_token = "${var.do_token}"
 }
-
